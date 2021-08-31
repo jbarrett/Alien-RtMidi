@@ -6,4 +6,8 @@ package Alien::RtMidi;
 
 use parent qw/ Alien::Base /;
 
+# ALIEN SYNOPSIS
+# ALIEN DESCRIPTION
+# ALIEN SEE ALSO
+
 1;
