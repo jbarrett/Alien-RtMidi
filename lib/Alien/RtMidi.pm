@@ -4,6 +4,8 @@ package Alien::RtMidi;
 
 # ABSTRACT: Install RtMidi
 
+our $VERSION = '0.00';
+
 use parent qw/ Alien::Base /;
 
 # ALIEN SYNOPSIS
