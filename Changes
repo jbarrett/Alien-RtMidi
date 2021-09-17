@@ -1,5 +1,9 @@
 Revision history for perl module Alien::RtMidi
 
+0.04 2021-09-17
+
+  - Switch back to Autoconf for non-Windows platforms
+
 0.03 2021-09-16
 
   - Switch build to cmake, should be quicker on Windows
