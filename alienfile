@@ -3,6 +3,7 @@ use alienfile;
 my $RTMIDI_MIN_VERSION = '4.0.0';
 my $RTMIDI_MAJOR_VERSION = 6;
 my $WIN = $^O eq 'MSWin32';
+my $CYG = $^O eq 'cygwin';
 
 plugin 'Gather::IsolateDynamic';
 plugin 'PkgConfig' => (
@@ -24,5 +25,5 @@ share {
 
     build $WIN
         ? [ [ '%{cmake3}', @{ meta->prop->{plugin_build_cmake}->{args} }, '-S', '.', '-B', 'build' ], '%{cmake3} --build build', '%{cmake3} --install build' ]
-        : [ '%{configure} --enable-static', '%{make}', '%{make} install' ];
+        : [ '%{configure} --enable-static ' . ( $CYG ? '--with-winmm' : '' ), '%{make}', '%{make} install' ];
 };
