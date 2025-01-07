@@ -25,5 +25,5 @@ share {
 
     build $WIN
         ? [ [ '%{cmake3}', @{ meta->prop->{plugin_build_cmake}->{args} }, '-S', '.', '-B', 'build' ], '%{cmake3} --build build', '%{cmake3} --install build' ]
-        : [ '%{configure} --enable-static ' . ( $CYG ? '--with-winmm' : '' ), '%{make} librtmidi.la', '%{make} install-rtmidi_incHEADERS install-libLTLIBRARIES' ];
+        : [ '%{configure} --enable-static ' . ( $CYG ? '--with-winmm' : '' ), '%{make} librtmidi.la', '%{make} install-exec-am install-data-am' ];
 };
