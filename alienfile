@@ -19,11 +19,15 @@ share {
     );
     plugin 'Extract' => 'tar.gz';
 
+    my @config = ( '--enable-static' );
+    push @config,  '--with-winmm' if $CYG;
+
     plugin $WIN
         ? 'Build::CMake'
         : 'Build::Autoconf';
 
     build $WIN
         ? [ [ '%{cmake3}', @{ meta->prop->{plugin_build_cmake}->{args} }, '-S', '.', '-B', 'build', '-DRTMIDI_BUILD_TESTING=0' ], '%{cmake3} --build build', '%{cmake3} --install build' ]
-        : [ '%{configure} --enable-static ' . ( $CYG ? '--with-winmm' : '' ), '%{make} librtmidi.la', '%{make} install-exec-am install-data-am' ];
+        : [ '%{configure} ' . join( ' ', @config ), '%{make} librtmidi.la', '%{make} install-exec-am install-data-am' ];
+        # ^ This smells pretty bad, patches welcome
 };
