@@ -22,6 +22,14 @@ share {
     my @config = ( '--enable-static' );
     push @config,  '--with-winmm' if $CYG;
 
+    patch sub {
+        my $build = shift;
+        return unless $build->runtime_prop->{version} =~ /^6\.0/;
+        my $patch = $build->install_prop->{patch} . '/0001-Add-a-method-to-reset-the-ok-flag-and-clear-the-erro.patch';
+        my $binary = $WIN ? '--binary' : '';
+        system( "patch $binary -p1 < $patch" );
+    };
+
     plugin $WIN
         ? 'Build::CMake'
         : 'Build::Autoconf';
