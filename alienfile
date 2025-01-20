@@ -26,7 +26,7 @@ share {
         my $build = shift;
         return unless $build->runtime_prop->{version} =~ /^6\.0/;
         my $patch = $build->install_prop->{patch} . '/0001-Add-a-method-to-reset-the-ok-flag-and-clear-the-erro.patch';
-        my $binary = $WIN ? '--binary' : '';
+        my $binary = ( $WIN || $CYG ) ? '--binary' : '';
         system( "patch $binary -p1 < $patch" );
     };
 
