@@ -20,7 +20,7 @@ share {
     plugin 'Extract' => 'tar.gz';
 
     my @config = ( '--enable-static' );
-    push @config,  '--with-winmm' if $CYG;
+    push @config, 'LDFLAGS="-std=gnu++11" CXXFLAGS="-std=gnu++11" --with-winmm' if $CYG;
 
     patch sub {
         my $build = shift;
