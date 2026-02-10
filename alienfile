@@ -5,7 +5,8 @@ my $RTMIDI_MAJOR_VERSION = 6;
 my $WIN = $^O eq 'MSWin32';
 my $CYG = $^O eq 'cygwin';
 my $MAC = $^O eq 'darwin';
-my $CMAKE = !!($WIN);
+#my $CMAKE = !!($WIN);
+my $CMAKE = 0;
 
 plugin 'Gather::IsolateDynamic';
 plugin 'PkgConfig' => (
