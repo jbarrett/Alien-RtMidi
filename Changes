@@ -1,5 +1,9 @@
 Revision history for perl module Alien::RtMidi
 
+0.10
+
+  - Minor changes to support macOS (KIWIROY)
+  - Revert Windows build to MSYS for now, to support FFI bundling
 
 0.09 2025-08-02
 
